@@ -26,7 +26,7 @@ Authorise the sync application with Google drive:
 > **IMPORTANT:** make sure to log in with your @cam account.
 
 ```bash
-$ ./sync login
+$ ./sync.py login
 ```
 
 Run the migration:
@@ -37,5 +37,5 @@ $ ./iar-export.sh
 
 ## Credentials
 
-``./sync login`` will store credentials in the file
+``./sync.py login`` will store credentials in the file
 ``credentials-storage.json``. You only need to run the login command once.
