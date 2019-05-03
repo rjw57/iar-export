@@ -21,6 +21,9 @@ SCOPES = [
     'https://www.googleapis.com/auth/drive',
 ]
 
+# Team drive id to upload dump to. See get_team_drive
+TEAM_DRIVE_ID = '0APA7CLnbdVpaUk9PVA'
+
 
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == 'login':
@@ -35,7 +38,9 @@ def main():
     LOG.info('Uploading %s', upload_filename)
     media = MediaFileUpload(upload_filename)
 
-    td_id = get_team_drive(client)['id']
+    td_id = TEAM_DRIVE_ID
+    # If id changes, you can use:
+    # td_id = get_team_drive(client)['id']
     LOG.info('Team drive id is: %s', td_id)
 
     files = client.files().list(
@@ -108,7 +113,7 @@ def get_team_drive(client):
         team_drive for team_drive in
         client.teamdrives().list().execute().get('teamDrives', [])
         if team_drive.get('name') == (
-            'Products and Projects - Automation team and UX team')
+            'Products and Projects - DevOps and UX Divisions')
     ]
 
     if len(team_drives) == 0:
